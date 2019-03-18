@@ -86,12 +86,12 @@ class grid():
 			for letter in line:
 				mod += letter + " "
 			mod+="\n"
-		print mod
-		print "Unmarked mines:"+str(self.nmines-self.markedMines)
+		print(mod)
+		print("Unmarked mines:"+str(self.nmines-self.markedMines))
 	
 	def click(self, x, y): #Returns True if you are still alive. False if not...
 		if self.verbose:
-			print "Clicking on ("+str(x)+","+str(y)+"), which is"+((not self.field[y][x])*" not")+" a mine."
+			print("Clicking on ("+str(x)+","+str(y)+"), which is"+((not self.field[y][x])*" not")+" a mine.")
 		if not self.field[y][x]:
 			self.revealed[y][x]=True
 			if self.getAdjacent(x,y) == 0:
@@ -113,7 +113,7 @@ class grid():
 			
 	def doubleClick(self, x, y):
 		if self.verbose:
-			print "Doubleclicking on ("+str(x)+","+str(y)+"), which is surrounded by "+str(self.getAdjacent(x,y))+" mines"
+			print("Doubleclicking on ("+str(x)+","+str(y)+"), which is surrounded by "+str(self.getAdjacent(x,y))+" mines")
 		nmarked = 0
 		part = self.outputGrid(False, [x-1,x+1,y-1,y+1])
 		for p in part: #Loop through to find all mines
@@ -138,7 +138,7 @@ class grid():
 				self.markedMines += 1
 			self.marks[y][x] = m
 			if self.verbose:
-				print "Marking ("+str(x)+","+str(y)+") as "+str(m)
+				print("Marking ("+str(x)+","+str(y)+") as "+str(m))
 		else:
 			raise Exception #THIS IS GROSS. NO NO NO. CUSTOM EXCEPTIONS PLEASE!
 			
